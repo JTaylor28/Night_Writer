@@ -34,7 +34,7 @@ class Translator
 
     def english_to_braille(english)
         english = english.downcase.delete("\n")
-        english_array = english.split("").flatten
+        english_array = english.split("")
         line1 = make_line(english_array, 0)
         line2 = make_line(english_array, 1)
         line3 = make_line(english_array, 2)
@@ -51,6 +51,28 @@ class Translator
     end
 
     def braille_to_english(braille)
-        braille = braille.split("\n")
+        lines = get_braille_characters(braille)
+        char_array = []
+
+        lines[0].length.times do |i|
+            char = [lines[0][i], lines[1][i], lines[2][i]]
+            char_array.push(char)
+        end
+        english = ""
+        char_array.each do |char|
+            english += @alphabet.key(char)
+        end
+        english
+    end
+
+    def get_braille_characters(braille)
+        braille_lines = braille.split("\n")
+        line1 = braille_lines[0]
+        line2 = braille_lines[1]
+        line3 = braille_lines[2]
+        line1_array = line1.chars.each_slice(2).map(&:join)
+        line2_array = line2.chars.each_slice(2).map(&:join)
+        line3_array = line3.chars.each_slice(2).map(&:join)
+        lines = [line1_array, line2_array, line3_array]
     end
 end

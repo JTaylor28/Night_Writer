@@ -14,7 +14,7 @@ RSpec.describe Translator do
         it "translates from Braille to english" do
             braille = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0..."
             translator = Translator.new
-            expect(translator.english_to_braille(braille)).to eq("hello world")
+            expect(translator.braille_to_english(braille)).to eq("hello world")
         end
     end
 end
