@@ -33,8 +33,9 @@ class Translator
     end
 
     def english_to_braille(english)
-        english = english.downcase
-        english_array = english.split("")
+        english = english.downcase.delete("\n")
+        english_array = english.split("").flatten
+        # require 'pry'; binding.pry
         line1 = ""
         english_array.each do |letter|
             line1 += @alphabet[letter][0]
