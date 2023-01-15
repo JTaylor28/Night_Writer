@@ -1,13 +1,16 @@
-# input = ARGV[0]
-# output = ARGV[1]
+require './lib/translator'
 
-# reader = File.open(ARGV[0], 'r')
-# text = reader.read
-# reader.close
+input = ARGV[0]
+output = ARGV[1]
 
+reader = File.open(ARGV[0], 'r')
+text = reader.read
+reader.close
 
-# writer = File.open(ARGV[1], "w")
-# text_2 = writer.write(text.upcase) 
-# writer.close
+translator = Translator.new
 
-# p "Created #{output} containing #{text_2} characters"
+writer = File.open(ARGV[1], "w")
+braille = writer.write(translator.english_to_braille(text))
+writer.close
+
+p "Created #{output} containing #{braille} characters"
