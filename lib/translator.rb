@@ -80,3 +80,17 @@ class Translator
         char_array
     end
 end
+
+
+
+# -----------------Planner-----------------
+
+# make tests for
+#     initialize
+#     make_line
+#     get_braille_lines
+#     get_braille_characters
+
+
+# iteration 3 
+#  Update the program so that messages of more than 80 characters are split over multiple lines.

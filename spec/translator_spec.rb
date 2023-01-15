@@ -2,6 +2,15 @@ require "spec_helper"
 
 
 RSpec.describe Translator do
+
+    let(:translator) {Translator.new}
+
+    describe "initialize" do
+        it "exists" do 
+            expect(translator).to be_a(Translator)
+        end
+    end
+
     describe "#english_to_braille" do
         it "translates from English to Braille" do
             english = "Hello world"

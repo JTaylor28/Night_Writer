@@ -14,3 +14,5 @@ braille = writer.write(translator.english_to_braille(english))
 writer.close
 
 p "Created #{output} containing #{braille} characters"
+
+# ruby ./lib/night_writer.rb message.txt braille.txt
