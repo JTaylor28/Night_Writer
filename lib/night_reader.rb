@@ -4,13 +4,13 @@ input = ARGV[0]
 output = ARGV[1]
 
 reader = File.open(ARGV[0], 'r')
-english = reader.read
+braille = reader.read
 reader.close
 
 translator = Translator.new
 
 writer = File.open(ARGV[1], "w")
-braille = writer.write(translator.english_to_braille(english))
+text = writer.write(translator.braille_to_english(braille))
 writer.close
 
-p "Created #{output} containing #{braille} characters"
+p "Created #{output} containing #{braille.size} characters"
