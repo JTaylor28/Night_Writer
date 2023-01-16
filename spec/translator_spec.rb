@@ -5,7 +5,7 @@ RSpec.describe Translator do
 
     let(:translator) {Translator.new}
 
-    describe "initialize" do
+    describe "#initialize" do
         it "exists" do 
             expect(translator).to be_a(Translator)
         end
