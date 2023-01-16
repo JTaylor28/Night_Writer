@@ -1,4 +1,6 @@
 class Translator
+    attr_reader :alphabet
+
     def initialize
 
         @alphabet = {
@@ -86,7 +88,6 @@ end
 # -----------------Planner-----------------
 
 # make tests for
-#     initialize
 #     make_line
 #     get_braille_lines
 #     get_braille_characters
