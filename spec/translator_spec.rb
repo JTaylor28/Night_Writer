@@ -49,27 +49,21 @@ RSpec.describe Translator do
     describe "#english_to_braille" do
         it "translates from English to Braille" do
             english = "Hello world"
-            translator = Translator.new
             expect(translator.english_to_braille(english)).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+        end
+    end
+
+    describe "#make_character_row" do 
+        it "returns a sting of braille characters based off given index position and ignorse nil vales" do
+            english = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
+            expect(translator.make_character_row(english, 0)).to eq "0.0.0.0.0....00.0.0.00"
         end
     end
 
     describe "#braille_to_english" do
         it "translates from Braille to english" do
             braille = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0..."
-            translator = Translator.new
             expect(translator.braille_to_english(braille)).to eq("hello world")
-        end
-    end
-
-    describe "#make_character_row" do 
-        it " makes a row of braille character based on index position" do
-            english_input = "Hello world"
-            english = hello_world
-            translator = Translator.new
-            expect(translator.english_to_braille(english)).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
-            expect(translator.make_character_row(english_input, 0)).to eq("0")
-
         end
     end
 
