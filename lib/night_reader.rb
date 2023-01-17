@@ -13,6 +13,6 @@ writer = File.open(ARGV[1], "w")
 text = writer.write(translator.braille_to_english(braille))
 writer.close
 
-p "Created #{output} containing #{braille.size} characters"
+p "Created #{output} containing #{text} characters"
 
 #ruby ./lib/night_reader.rb braille.txt original_message.txt

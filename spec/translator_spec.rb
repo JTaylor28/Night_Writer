@@ -61,4 +61,11 @@ RSpec.describe Translator do
             expect(translator.braille_to_english(braille)).to eq("hello world")
         end
     end
+
+    describe "#make_character_row" do 
+        it " makes a row of braille character based on index position" do
+            expect(Translator.make_character_row(0)).to eq("0")
+        end
+    end
+
 end

@@ -2,6 +2,7 @@ class Translator
     attr_reader :alphabet
 
     def initialize
+        @text_bucket = ""
 
         @alphabet = {
             "a" => ["0.","..",".."],
@@ -34,22 +35,26 @@ class Translator
         }
     end
 
+    def line_controller
+
+    end
+
     def english_to_braille(english)
         english = english.downcase.delete("\n")
         english_array = english.split("")
-        line1 = make_line(english_array, 0)
-        line2 = make_line(english_array, 1)
-        line3 = make_line(english_array, 2)
+        row1 = make_character_row(english_array, 0)
+        row2 = make_character_row(english_array, 1)
+        row3 = make_character_row(english_array, 2)
        
-        braille = line1 +"\n"+ line2 +"\n"+ line3
+        braille = row1 +"\n"+ row2 +"\n"+ row3 +"\n"
     end
 
-    def make_line(array,index)
-        line = ""
-        array.each do |letter|
-            line += @alphabet[letter][index]
+    def make_character_row(english_input,row)
+        row_collector = ""
+        english_input.each do |letter|
+            row_collector += @alphabet[letter][row]
         end
-        line
+        row_collector
     end
 
     def braille_to_english(braille)
@@ -93,5 +98,6 @@ end
 #     get_braille_characters
 
 
-# iteration 3 
+# iteration 2 
 #  Update the program so that messages of more than 80 characters are split over multiple lines.
+# create a place to store the rows and apply perameters to the text as a whole.
