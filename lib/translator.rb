@@ -1,5 +1,6 @@
 class Translator
-    attr_reader :alphabet
+    attr_reader :alphabet,
+                :text_bucket
 
     def initialize
         @text_bucket = ""
@@ -35,9 +36,6 @@ class Translator
         }
     end
 
-    # def output_controller
-    #     @text_bucket << braille
-    # end
 
     def english_to_braille(english)
         english = english.downcase.delete("\n")
@@ -46,9 +44,11 @@ class Translator
         row2 = make_character_row(english_array, 1)
         row3 = make_character_row(english_array, 2)
         braille = row1 +"\n"+ row2 +"\n"+ row3 +"\n"
+        @text_bucket << braille
     end
     
     #grabs key value base off of given index possiton
+    #and returns a string of those index values
     
     def make_character_row(english_input,row)
         row_collector = ""
@@ -92,13 +92,6 @@ end
 
 
 # -----------------Planner-----------------
-
-# make tests for
-#     make_line
-#     get_braille_lines
-#     get_braille_characters
-
-
 # iteration 2 
 #  Update the program so that messages of more than 80 characters are split over multiple lines.
 # create a place to store the rows and apply perameters to the text as a whole.
