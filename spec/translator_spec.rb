@@ -68,7 +68,7 @@ RSpec.describe Translator do
     end
 
     describe "#get_braille_line" do 
-        it "retuen a nexted array of braille lines" do
+        it "Return's a collection of braille characters separated by lines" do
             braille = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0..."
             expect(translator.get_braille_lines(braille)).to eq [["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
             ["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
