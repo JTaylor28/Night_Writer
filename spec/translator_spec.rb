@@ -42,8 +42,7 @@ RSpec.describe Translator do
                 " " => ["..","..",".."]
             }
             expect(translator.alphabet).to eq(expected) 
-        end
-             
+        end   
     end
 
     describe "#english_to_braille" do
@@ -68,12 +67,38 @@ RSpec.describe Translator do
     end
 
     describe "#get_braille_line" do 
-        it "Return's a collection of braille characters separated by lines" do
+        it "Return's a collection of braille characters separated by rows" do
+            expected = [
+                ["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
+                ["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
+                ["..", "..", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", ".."]
+                ]
             braille = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0..."
-            expect(translator.get_braille_lines(braille)).to eq [["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
-            ["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
-            ["..", "..", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", ".."]]
+            expect(translator.get_braille_lines(braille)).to eq expected
         end
     end
 
+    describe "#get_braille_characters" do
+        it "Return's a collection of braille characters sepaerated by alphabet key value  " do 
+            expected = [
+                    ["0.", "00", ".."],
+                    ["0.", ".0", ".."],
+                    ["0.", "0.", "0."],
+                    ["0.", "0.", "0."],
+                    ["0.", ".0", "0."],
+                    ["..", "..", ".."],
+                    [".0", "00", ".0"],
+                    ["0.", ".0", "0."],
+                    ["0.", "00", "0."],
+                    ["0.", "0.", "0."],
+                    ["00", ".0", ".."]
+                    ]
+            braille_lines = [
+                ["0.", "0.", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", "00"],
+                ["00", ".0", "0.", "0.", ".0", "..", "00", ".0", "00", "0.", ".0"],
+                ["..", "..", "0.", "0.", "0.", "..", ".0", "0.", "0.", "0.", ".."]
+                ]
+            expect(translator.get_braille_characters(braille_lines)).to eq expected
+        end
+    end
 end
