@@ -35,9 +35,9 @@ class Translator
         }
     end
 
-    def line_controller
-
-    end
+    # def output_controller
+    #     @text_bucket << braille
+    # end
 
     def english_to_braille(english)
         english = english.downcase.delete("\n")
@@ -45,10 +45,11 @@ class Translator
         row1 = make_character_row(english_array, 0)
         row2 = make_character_row(english_array, 1)
         row3 = make_character_row(english_array, 2)
-       
         braille = row1 +"\n"+ row2 +"\n"+ row3 +"\n"
     end
-
+    
+    #grabs key value base off of given index possiton
+    
     def make_character_row(english_input,row)
         row_collector = ""
         english_input.each do |letter|
