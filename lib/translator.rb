@@ -90,7 +90,6 @@ class Translator
 end
 
 
-
 # -----------------Planner-----------------
 # iteration 2 
 #  Update the program so that messages of more than 80 characters are split over multiple lines.
