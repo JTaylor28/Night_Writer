@@ -34,7 +34,6 @@ class Translator
         }
     end
 
-
     def english_to_braille(english)
         english = english.downcase.delete("\n")
         english_array = english.split("")
@@ -44,16 +43,11 @@ class Translator
         braille = row1 +"\n"+ row2 +"\n"+ row3 +"\n"
     end
     
-   #grabs key value base off of given index possiton
-    #and returns a string of those index values and ingorns
-    #unrecognised characters
-    
     def make_character_row(english_input,row)
         english_input.filter_map do |letter|
             @alphabet[letter][row] if @alphabet.key?(letter)
         end.join
     end
-
 
     def braille_to_english(braille)
         braille_lines = get_braille_lines(braille)
