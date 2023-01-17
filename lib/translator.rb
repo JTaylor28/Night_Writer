@@ -1,9 +1,7 @@
 class Translator
-    attr_reader :alphabet,
-                :text_bucket
+    attr_reader :alphabet
 
     def initialize
-        @text_bucket = ""
 
         @alphabet = {
             "a" => ["0.","..",".."],
@@ -44,18 +42,21 @@ class Translator
         row2 = make_character_row(english_array, 1)
         row3 = make_character_row(english_array, 2)
         braille = row1 +"\n"+ row2 +"\n"+ row3 +"\n"
-        @text_bucket << braille
     end
     
     #grabs key value base off of given index possiton
     #and returns a string of those index values
     
     def make_character_row(english_input,row)
-        row_collector = ""
-        english_input.each do |letter|
-            row_collector += @alphabet[letter][row]
-        end
-        row_collector
+        # row_collector = ""
+        # english_input.each do |letter|
+        #     row_collector += @alphabet[letter][row]
+        # end
+        # row_collector
+        x= english_input.filter_map do |letter|
+            @alphabet[letter][row] if @alphabet.key?(letter)
+        end.join
+        require 'pry'; binding.pry
     end
 
     def braille_to_english(braille)
@@ -87,10 +88,8 @@ class Translator
         end
         char_array
     end
+
+    # def edgecase_checker(text)
+    #     text = text.downcase 
+    # end
 end
-
-
-# -----------------Planner-----------------
-# iteration 2 
-#  Update the program so that messages of more than 80 characters are split over multiple lines.
-# create a place to store the rows and apply perameters to the text as a whole.

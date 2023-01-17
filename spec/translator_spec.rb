@@ -60,11 +60,10 @@ RSpec.describe Translator do
         end
     end
 
-    describe "#text_bucket" do 
-        it "returns the rows of converted text" do 
-            english = "Hello world"
-            expect(translator.english_to_braille(english)).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
-            expect(translator.text_bucket).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+    describe "#make_character_row" do 
+        it "returns a sting of braille characters based off given index position and ignorse nil vales" do
+            english = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
+            expect(translator.make_character_row(english, 0)).to eq "0.0.0.0.0....00.0.0.00"
         end
     end
 
