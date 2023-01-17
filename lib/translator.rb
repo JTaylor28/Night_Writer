@@ -85,7 +85,4 @@ class Translator
         char_array
     end
 
-    # def edgecase_checker(text)
-    #     text = text.downcase 
-    # end
 end
