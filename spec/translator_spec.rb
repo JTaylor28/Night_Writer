@@ -1,6 +1,5 @@
 require "spec_helper"
 
-
 RSpec.describe Translator do
 
     let(:translator) {Translator.new}
